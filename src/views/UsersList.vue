@@ -21,7 +21,7 @@ import UserCard from '../components/UserCard.vue'
   components: {
     appUserCard: UserCard,
   },
-  name: 'UsersList'
+  name: 'UsersList',
 })
 export default class UserList extends Vue { 
   get usersList(): [] {
@@ -34,7 +34,9 @@ export default class UserList extends Vue {
     return this.$store.state.isError;
   }
   private mounted () {
-    this.$store.dispatch('loadUsers');
+    if(!this.$store.state.users.length) {
+      this.$store.dispatch('loadUsers');
+    }
   }
 }
 </script>

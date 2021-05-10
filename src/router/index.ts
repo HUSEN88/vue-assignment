@@ -8,17 +8,17 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'UserList',
-    component: UsersList
+    component: UsersList,
   },
   {
     path: '/users/:id/posts',
     name: 'UserPosts',
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserPosts.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserPosts.vue'),
   },
   {
     path: '/users/:id/posts/:postId',
     name: 'UserPost',
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserPost.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserPost.vue'),
   }
 ]
 

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex, { Store } from 'vuex'
 import axios from 'axios'
 Vue.use(Vuex)
 
@@ -12,9 +12,9 @@ export default new Vuex.Store({
     isError: Boolean
   },
   actions: {
-    loadUsers ({ commit }) {
+    async loadUsers ({ commit }) {
       commit('SET_LOADING', true)
-      axios
+        await axios
         .get('https://jsonplaceholder.typicode.com/users')
         .then(r => r.data)
         .then(users => {
@@ -26,9 +26,9 @@ export default new Vuex.Store({
           commit('SET_LOADING', false)
         })
     },
-    loadPosts ({commit}, uid ) {
+    async loadPosts ({commit}, uid ) {
       commit('SET_LOADING', true)
-      axios
+      await axios
       .get('https://jsonplaceholder.typicode.com/posts?userId=' + uid)
       .then(r => r.data)
       .then(posts => {
@@ -40,9 +40,9 @@ export default new Vuex.Store({
         commit('SET_LOADING', false)
       })
     },
-    loadPost ({commit}, pid ) {
+    async loadPost ({commit}, pid ) {
       commit('SET_LOADING', true)
-      axios
+      await axios
       .get('https://jsonplaceholder.typicode.com/posts/' + pid)
       .then(r => r.data)
       .then(post => {
